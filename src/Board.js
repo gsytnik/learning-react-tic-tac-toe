@@ -3,6 +3,8 @@ import Square from './Square';
 import Banner from './Banner';
 import { calculateWinner } from './helpers';
 
+
+
 // React Hooks
 export default function Board() {
   // useState
@@ -10,7 +12,8 @@ export default function Board() {
   const [ winner, setWinner ] = useState(null);
   const [ xIsNext, setXIsNext ] = useState(true);
 
-  const status = 'Next player: X';
+  var status = 'Next player: X';
+  
 
   const handleClick = (i) => {
     const squareCopy = squares.slice();
@@ -18,6 +21,10 @@ export default function Board() {
     setSquares(squareCopy);
     setWinner(calculateWinner(squareCopy));
     setXIsNext(!xIsNext);
+    status = xIsNext ? 'Next Player: O' : 'Next Player: X';
+    console.log(status);
+
+
   }
 
   const renderSquare = (i) => {
